@@ -1,5 +1,6 @@
 import React from "react";
 import logo from '../assets/logo-rf.png'
+import { NavLink } from "react-router";
 
 const Navbar = () => {
   return (
@@ -30,7 +31,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
               <li>
-                <a>Home</a>
+                <NavLink to='./'>      <a>Home</a></NavLink>
               </li>
 
               <li>
@@ -45,25 +46,19 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <img src={logo} className="w-10 rounded-xl" alt="" />
+          <div className="flex justify-center items-center">
+       <span> <img src={logo} className="w-10 rounded-xl" alt="" /></span>
           <a className="md:btn btn-ghost btn text-sm md:text-xl hover:bg-accent hidden md:block items-center">
             Roommate
           </a>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Home</a>
+        <NavLink to='./'>      <a>Home</a></NavLink>
             </li>
-            {/* <li>
-        <details>
-          <summary>Parent</summary>
-          <ul className="p-2">
-            <li><a>Submenu 1</a></li>
-            <li><a>Submenu 2</a></li>
-          </ul>
-        </details>
-      </li> */}
+    
             <li>
               <a>Find Roommate</a>
             </li>
@@ -73,8 +68,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex gap-2">
-          <button className="btn hover:bg-accent text-sm md:text-lg md:w-16 w-14  ">Login</button>
-          <button className="btn hover:bg-accent text-sm w-15 md:text-lg md:w-19">Signup</button>
+          <NavLink to='/login'> <button className="btn hover:bg-accent text-sm md:text-lg md:w-16 w-14  ">Login</button></NavLink>
+          <NavLink to='/signup'><button className="btn hover:bg-accent text-sm w-15 md:text-lg md:w-19">Signup</button>
+</NavLink>
         </div>
       </div>
     </div>
