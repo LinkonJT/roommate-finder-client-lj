@@ -3,7 +3,21 @@
 
 
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: lemonade --default, abyss }
+
+
+
+    @plugin "daisyui/theme" {
+  name: "lemonade";
+  default: true;
+  --color-primary: blue;
+  --color-accent: #bb9457; 
+}
+
+
+
+
 
 * {
   font-family: "Poppins", sans-serif;
