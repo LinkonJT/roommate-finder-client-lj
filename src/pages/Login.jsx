@@ -1,10 +1,52 @@
-import React from 'react';
+import React, { use} from 'react';
 import { FcGoogle } from 'react-icons/fc';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
+import { AuthContext } from '../provider/AuthContext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+
+const {signinUser} = use(AuthContext);
+console.log(signinUser);
+
+const navigate = useNavigate();
+
+const handleSignin = e =>{
+  e.preventDefault();
+
+   const form = e.target;
+    // const email = form.email.value;
+    // const password = form.password.value;
+    // console.log(email, password);
+const formData = new FormData(form)
+    const {email, password} = Object.fromEntries(formData.entries())
+
+    signinUser(email, password)
+    .then((result)=>{
+console.log(result.user);
+const signinInfo = {
+  email,
+  lastSignInTime: result.user?.metadata?.lastSignInTime
+
+}
+ Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Login successFull",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+navigate('/')
+    }).catch((error)=>{
+            console.log(error);
+            });
+          }
+
+
+
     return (
-          <div className="py-5">
+      <div>
+            <form onSubmit={handleSignin } className="py-5">
         <h1 className="text-xl md:text-3xl font-bold text-center">Login now!</h1>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
             <div className="card-body">
@@ -12,17 +54,18 @@ const Login = () => {
                
                 {/* email */}
                 <label className="label">Email</label>
-                <input type="email" className="input" placeholder="Email" />
+                <input type="email" name='email' className="input" placeholder="Email" />
                 <label className="label">Password</label>
                 <input
                   type="password"
                   className="input"
                   placeholder="Password"
+                  name="password"
                 />
                 <div>
                   <a className="link link-hover">Forgot password?</a>
                 </div>
-                <button className="btn btn-neutral mt-4">SignUp</button>
+                <button className="btn btn-neutral mt-4">Login</button>
 
                 <div className="space-y-3">
                   <button className="btn bg-base-100 btn-outline w-full">
@@ -40,9 +83,11 @@ const Login = () => {
               </fieldset>
             </div>
           </div>
+      </form>
       </div>
     
     );
-};
+}
+
 
 export default Login;
