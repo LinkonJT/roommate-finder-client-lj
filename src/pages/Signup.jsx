@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 
 const Signup = () => {
-const {createUser} = use(AuthContext);
+const {createUser, logOut} = use(AuthContext);
 console.log(createUser)
 
 const navigate = useNavigate()
@@ -16,7 +16,8 @@ const handleSignup= (e)=>{
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
-const {email, password, ...restFormData} = Object.fromEntries(formData.entries());
+const {email, password, name, photoURL } = Object.fromEntries(formData.entries());
+console.log(email, password, name, photoURL)
 
 
 /*** Password validation *****/
@@ -41,15 +42,17 @@ createUser(email, password)
 const createdUser = result.user;
 console.log("Firebase user created",createdUser);
 
-  Swal.fire({
+return logOut()
+}).then(()=>{
+    Swal.fire({
           icon: "success",
           title: "Created User, Signup successful",
           timer: 1500,
           showConfirmButton: false,
         });
+ navigate('/login')
+})
 
-  navigate('/login')
-      })
 .catch((error) => {
         console.error("Signup error:", error.message);
         Swal.fire({
@@ -57,14 +60,9 @@ console.log("Firebase user created",createdUser);
           title: "Signup failed",
           text: error.message,
         });
-      });
+      })
 
 }
-
-
-
-{/* <br /> */}
-
 
 
 
@@ -90,7 +88,7 @@ console.log("Firebase user created",createdUser);
               <input
                 type="text"
                 className="input"
-                name="photo"
+                name="photoURL"
                 placeholder="Photo URL"
               />
               {/* email */}

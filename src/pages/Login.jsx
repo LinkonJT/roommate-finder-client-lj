@@ -23,8 +23,6 @@ const formData = new FormData(form)
 
 
 /** password validation usdin RegExp */
-//  console.log("Email:", email);
-//     console.log("Password:", password);
 
 const isValidPassword =  /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
 if(!isValidPassword){
