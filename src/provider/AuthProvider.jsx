@@ -6,14 +6,17 @@ import { AuthContext } from './AuthContext';
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null)
-
+/********Create user */
 const createUser = (email, password)=>{
     return createUserWithEmailAndPassword(auth, email, password)
 }
+
+/*******SignIN user */
 const signinUser = (email, password)=>{
     return signInWithEmailAndPassword(auth, email, password)
 }
 
+/*********LogOut user*** */
 const logOut = ()=>{
     return signOut(auth)
 }
@@ -24,7 +27,7 @@ useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
         setUser(currentUser)
     })
-    return ()=>unsubscribe
+    return ()=>unsubscribe();
 },[])
 
 const userInfo = {

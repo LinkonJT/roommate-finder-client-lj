@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
+import { updateProfile } from "firebase/auth";
 
 
 const Signup = () => {
@@ -42,15 +43,23 @@ createUser(email, password)
 const createdUser = result.user;
 console.log("Firebase user created",createdUser);
 
-return logOut()
-}).then(()=>{
+
+
+// return logOut()
+// })
+
+return updateProfile(createdUser, {
+        displayName: name,
+        photoURL: photoURL,
+      })
+    }).then(()=>{
     Swal.fire({
           icon: "success",
           title: "Created User, Signup successful",
           timer: 1500,
           showConfirmButton: false,
         });
- navigate('/login')
+ navigate('/')
 })
 
 .catch((error) => {

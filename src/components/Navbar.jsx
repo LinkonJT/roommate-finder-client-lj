@@ -79,10 +79,6 @@ const Navbar = () => {
               <li>
                 <a>My Listings</a>
               </li>
-
-              <li>
-                <a>Log Out</a>
-              </li>
             </ul>
           </div>
           <div className="flex justify-center items-center">
@@ -116,10 +112,10 @@ const Navbar = () => {
           {user ? (
             <>
               <div
-                className="tooltip tooltip-bottom flex"
+                className="tooltip tooltip-bottom flex items-center"
                 data-tip={user.displayName || "no name"}>
                 <img
-                  className="w-8 rounded-full border"
+                  className="w-6 md:w-8 rounded-full border"
                   src={user.photoURL || defaultProPic}
                   alt=""
                 />
@@ -135,13 +131,13 @@ const Navbar = () => {
             <>
               <NavLink
                 to="/login"
-                className="btn hover:bg-accent text-sm btn-outline md:text-lg md:w-16 w-14  ">
+                className="btn btn-sm hover:bg-accent text-sm btn-outline md:text-lg md:w-16 w-14  ">
                 {" "}
                 Login
               </NavLink>
               <NavLink
                 to="/signup"
-                className="btn hover:bg-accent btn-outline text-sm w-15 md:text-lg md:w-19">
+                className="btn btn-sm hover:bg-accent btn-outline text-sm w-15 md:text-lg md:w-19">
                 Signup
               </NavLink>
               
