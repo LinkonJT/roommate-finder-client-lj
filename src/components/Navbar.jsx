@@ -102,13 +102,13 @@ const Navbar = () => {
             </li>
 
             <li>
-              <a>Add to Find Roommate</a>
+              <NavLink to='/addToFind'>Add to Find Roommate</NavLink>
             </li>
             <li>
-              <a>Browse Listing</a>
+              <NavLink to='/browseListing'>Browse Listing</NavLink>
             </li>
             <li>
-              <a>My Listings</a>
+              <NavLink to='/myListing'>My Listings</NavLink>
             </li>
           </ul>
         </div>

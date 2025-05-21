@@ -5,6 +5,12 @@ import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import AddToFindRoommate from "../pages/AddToFindRoommate";
+import BrowseListing from "../pages/BrowseListing";
+import MyListing from "../pages/MyListing";
+import PrivateRoute from "../provider/PrivateRoute";
+import Details from "../pages/Details";
+import NotFound from "../pages/NotFound";
 
 
 
@@ -26,7 +32,37 @@ const router = createBrowserRouter([
         path: '/signup',
         Component: Signup,
       },
+      {
+        path: '/addToFind',
+        element: 
+        <PrivateRoute>
+          <AddToFindRoommate></AddToFindRoommate>
+        </PrivateRoute>
+      },
+       {
+        path: '/browseListing',
+        Component: BrowseListing,
+      },
+       {
+        path: '/myListing',
+        element: 
+        <PrivateRoute>
+          <MyListing></MyListing>
+        </PrivateRoute>
+      },
+
+      {
+        path: '/details',
+        element:
+        <PrivateRoute>
+          <Details></Details>
+        </PrivateRoute>
+      }
     ]
+  },
+   {
+    path: '*',
+    element: <NotFound></NotFound>,
   },
 ]);
 
