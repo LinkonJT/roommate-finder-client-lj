@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import Swal from "sweetalert2";
 
+
 const Signup = () => {
 const {createUser} = use(AuthContext);
 console.log(createUser)
@@ -17,9 +18,27 @@ const handleSignup= (e)=>{
     const formData = new FormData(form);
 const {email, password, ...restFormData} = Object.fromEntries(formData.entries());
 
+
+/*** Password validation *****/
+
+  const hasUppercase = /[A-Z]/.test(password);
+  const hasLowercase = /[a-z]/.test(password);
+  const hasMinLength = password.length >= 6;
+
+  if (!hasUppercase || !hasLowercase || !hasMinLength) {
+    Swal.fire({
+      icon: "error",
+      title: "Weak Password",
+       html: "Password must contain at least:<br>- One uppercase letter<br>- One lowercase letter<br>- Minimum 6 characters",
+       
+    });
+    return;
+  }
+
+/**Calling createUser function */
 createUser(email, password)
 .then((result)=>{
-const createdUser = result.user
+const createdUser = result.user;
 console.log("Firebase user created",createdUser);
 
   Swal.fire({
@@ -44,7 +63,7 @@ console.log("Firebase user created",createdUser);
 
 
 
-
+{/* <br /> */}
 
 
 
@@ -82,6 +101,8 @@ console.log("Firebase user created",createdUser);
                 className="input"
                 placeholder="Email"
               />
+
+              {/* Password */}
               <label className="label">Password</label>
               <input
                 type="password"

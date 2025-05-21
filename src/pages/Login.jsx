@@ -21,6 +21,23 @@ const handleSignin = e =>{
 const formData = new FormData(form)
     const {email, password} = Object.fromEntries(formData.entries())
 
+
+/** password validation usdin RegExp */
+//  console.log("Email:", email);
+//     console.log("Password:", password);
+
+const isValidPassword =  /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password);
+if(!isValidPassword){
+    Swal.fire({
+        icon: "error",
+        title: "Password Invalid",
+        html:
+          "Password must contain at least:<br>- One uppercase letter<br>- One lowercase letter,<br>- Minimum 6 characters",
+      });
+      return;
+}
+
+/****calling signinUser function */
     signinUser(email, password)
     .then((result)=>{
 console.log(result.user);
