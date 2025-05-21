@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 
 const Login = () => {
 
-const {signinUser} = use(AuthContext);
+const {signinUser, signinWithGoogle} = use(AuthContext);
 console.log(signinUser);
 
 const navigate = useNavigate();
-
+/************Start: Handle Email Password login */
 const handleSignin = e =>{
   e.preventDefault();
 
@@ -57,7 +57,31 @@ navigate('/')
             });
           }
 
-
+/***********Start: handle Google Sign In ****** */
+const handleGoogleLogin = () => {
+    signinWithGoogle() // This function comes from your AuthContext
+        .then(result => {
+            // Handle success (redirect, show message)
+            console.log("Google signed in user:", result.user);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Google Login Successful!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            navigate('/');
+        })
+        .catch(error => {
+            // Handle errors (show error message)
+            console.error("Google Login error:", error.message);
+            Swal.fire({
+                icon: "error",
+                title: "Google Login Failed",
+                text: error.message,
+            });
+        });
+};
 
     return (
       <div>
@@ -82,8 +106,9 @@ navigate('/')
                 </div>
                 <button className="btn btn-neutral mt-4">Login</button>
 
-                <div className="space-y-3">
-                  <button className="btn bg-base-100 btn-outline w-full">
+              </fieldset>
+              <div className="space-y-3">
+                  <button onClick={handleGoogleLogin} type='button' className="btn bg-base-100 btn-outline w-full">
                     <FcGoogle size={24} /> Login with Google
                   </button>
                   <p className="font-semibold text-center">
@@ -95,10 +120,11 @@ navigate('/')
                     </NavLink>
                   </p>
                 </div>
-              </fieldset>
             </div>
           </div>
+          
       </form>
+      
       </div>
     
     );

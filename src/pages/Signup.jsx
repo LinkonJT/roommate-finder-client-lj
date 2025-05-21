@@ -7,7 +7,7 @@ import { updateProfile } from "firebase/auth";
 
 
 const Signup = () => {
-const {createUser, logOut} = use(AuthContext);
+const {createUser, logOut, signinWithGoogle} = use(AuthContext);
 console.log(createUser)
 
 const navigate = useNavigate()
@@ -73,7 +73,31 @@ return updateProfile(createdUser, {
 
 }
 
-
+/***********Start: handle Google Sign In ****** */
+const handleGoogleLogin = () => {
+    signinWithGoogle() // This function comes from your AuthContext
+        .then(result => {
+            // Handle success (redirect, show message)
+            console.log("Google signed in user:", result.user);
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Google Login Successful!",
+                showConfirmButton: false,
+                timer: 1500,
+            });
+            navigate('/');
+        })
+        .catch(error => {
+            // Handle errors (show error message)
+            console.error("Google Login error:", error.message);
+            Swal.fire({
+                icon: "error",
+                title: "Google Login Failed",
+                text: error.message,
+            });
+        });
+};
 
   return (
     <div>
@@ -123,7 +147,7 @@ return updateProfile(createdUser, {
               <button className="btn btn-neutral mt-4">SignUp</button>
 
               <div className="space-y-3">
-                <button className="btn bg-base-100 btn-outline w-full">
+                <button onClick={handleGoogleLogin} type="button" className="btn bg-base-100 btn-outline w-full">
                   <FcGoogle size={24} /> Login with Google
                 </button>
                 <p className="font-semibold text-center">

@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
 import defaultProPic from "../assets/userphoto.png";
 import Swal from "sweetalert2";
+import { Tooltip } from 'react-tooltip'
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -74,7 +75,10 @@ const Navbar = () => {
               </li>
 
               <li>
-                <a>Find Roommate</a>
+                <a>Add to Find Roommate</a>
+              </li>
+              <li>
+                <a>Browse Listing</a>
               </li>
               <li>
                 <a>My Listings</a>
@@ -98,7 +102,10 @@ const Navbar = () => {
             </li>
 
             <li>
-              <a>Find Roommate</a>
+              <a>Add to Find Roommate</a>
+            </li>
+            <li>
+              <a>Browse Listing</a>
             </li>
             <li>
               <a>My Listings</a>
