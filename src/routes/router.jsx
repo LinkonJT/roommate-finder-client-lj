@@ -10,6 +10,7 @@ import BrowseListing from "../pages/BrowseListing";
 import MyListing from "../pages/MyListing";
 import PrivateRoute from "../provider/PrivateRoute";
 import Details from "../pages/Details";
+import UpdateListing from "../pages/UpdateListing";
 import NotFound from "../pages/NotFound";
 
 
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
         element:
         <PrivateRoute>
           <Details></Details>
+        </PrivateRoute>
+      },
+       {
+        path: '/updateListing/:id',
+        loader: ({params})=>fetch(`http://localhost:3000/listings/${params.id}`),
+        element:
+        <PrivateRoute>
+          <UpdateListing></UpdateListing>
         </PrivateRoute>
       }
     ]

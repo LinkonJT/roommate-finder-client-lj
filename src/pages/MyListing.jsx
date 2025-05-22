@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthContext';
 import { FaRegEdit } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 
 const MyListing = () => {
@@ -46,14 +46,9 @@ fetch(`http://localhost:3000/listings/${_id}`,{
     }
 })
 
-
-
-
-    
-  
   }
 });
-      }
+ }
 
     /**for myListings table */
   const [myListings, setMyListings] = useState([]);
@@ -97,7 +92,7 @@ fetch(`http://localhost:3000/listings/${_id}`,{
                 {/* <button className="btn btn-xs md:btn-sm btn-warning">Update</button>
                 <button className="btn btn-xs md:btn-sm  btn-error ml-2">Delete</button> */}
                 <div className="md:flex lg:flex gap-4">
-  <button className="btn hover:bg-accent btn-xs join-item"><FaRegEdit size={20} /></button>
+  <Link to={`/updateListing/${listing._id}`} className="btn hover:bg-accent btn-xs join-item"><FaRegEdit size={20} /></Link>
   <button onClick={()=>handleDelete(listing._id)} className="btn hover:bg-accent btn-xs join-item"><MdDeleteOutline size={20} /></button>
   
 </div>
