@@ -174,8 +174,8 @@ const handleAddListing = (e)=>{
               name="email"
               className="input input-bordered w-full"
               value={user?.email || ''} // Populate with user's email
-              readOnly // Make it read-only
-              disabled // Make it un-editable and visually distinct
+              readOnly // 
+              // disabled // 
             />
           </div>
 
@@ -189,8 +189,8 @@ const handleAddListing = (e)=>{
               name="name"
               className="input input-bordered w-full"
               value={user?.displayName || ''} // Populate with user's display name
-              readOnly // Make it read-only
-              disabled // Make it un-editable and visually distinct
+              readOnly
+              // disabled 
             />
           </div>
 
