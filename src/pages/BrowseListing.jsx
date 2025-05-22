@@ -1,13 +1,13 @@
 import React from "react";
-import { useLoaderData } from "react-router";
-import ListingTable from "../components/ListingTable";
+import { NavLink, useLoaderData } from "react-router";
+
 
 const BrowseListing = () => {
   const listings = useLoaderData();
   console.log(listings);
 
   return (
-    <div className="w-11/12 mx-auto">
+    <div className="w-11/12 mx-auto my-6">
       <h1 className="text-center text-xl font-bold my-4">
         Browse Our Listings
       </h1>
@@ -29,10 +29,10 @@ const BrowseListing = () => {
               <tr key={listing._id}>
                 <th >{index + 1}</th>
                 <td>{listing.title}</td>
-                <td>${listing.rentAmount}</td>
+                <td>${listing.rent}</td>
                 <td className="hidden md:block">{listing.location}</td>
                 <td>
-                  <button className="btn btn-sm">Details</button>
+                  <NavLink to={`/listing/${listing._id}`}  className="btn btn-sm">See More</NavLink>
                 </td>
               </tr>
             ))}

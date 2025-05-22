@@ -76,7 +76,7 @@ const handleAddListing = (e)=>{
             </label>
             <input
               type="number"
-              name="rentAmount"
+              name="rent"
               placeholder="e.g., 800"
               className="input input-bordered w-full"
               min="0" // Prevent negative values
