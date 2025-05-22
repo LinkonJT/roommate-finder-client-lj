@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { useContext, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../provider/AuthContext";
@@ -7,15 +7,16 @@ import { updateProfile } from "firebase/auth";
 
 
 const Signup = () => {
-const {createUser, logOut, signinWithGoogle} = use(AuthContext);
+const {createUser, logOut, signinWithGoogle} = useContext(AuthContext);
 console.log(createUser)
 
 const navigate = useNavigate()
-
+const [isLoading, setIsLoading] = useState(false);
 
 const handleSignup= (e)=>{
     e.preventDefault();
     const form = e.target;
+    setIsLoading(true);
     const formData = new FormData(form);
 const {email, password, name, photoURL } = Object.fromEntries(formData.entries());
 console.log(email, password, name, photoURL)
@@ -39,39 +40,34 @@ console.log(email, password, name, photoURL)
 
 /**Calling createUser function */
 createUser(email, password)
-.then((result)=>{
-const createdUser = result.user;
-console.log("Firebase user created",createdUser);
-
-
-
-// return logOut()
-// })
-
-return updateProfile(createdUser, {
-        displayName: name,
-        photoURL: photoURL,
-      })
-    }).then(()=>{
+  .then((result) => {
+    // Use the currently signed-in user for updateProfile
+    return updateProfile(result.user, {
+      displayName: name,
+      photoURL: photoURL,
+    });
+  })
+  .then(() => {
     Swal.fire({
-          icon: "success",
-          title: "Created User, Signup successful",
-          timer: 1500,
-          showConfirmButton: false,
-        });
- navigate('/')
-})
-
-.catch((error) => {
-        console.error("Signup error:", error.message);
-        Swal.fire({
-          icon: "error",
-          title: "Signup failed",
-          text: error.message,
-        });
-      })
-
+      icon: "success",
+      title: "Created User, Signup successful",
+      timer: 1500,
+      showConfirmButton: false,
+    });
+    navigate('/');  ///navigate
+    setIsLoading(false); 
+  })
+  .catch((error) => {
+    console.error("Signup error:", error.message);
+    Swal.fire({
+      icon: "error",
+      title: "Signup failed",
+      text: error.message,
+    });
+    setIsLoading(false); 
+  });
 }
+
 
 /***********Start: handle Google Sign In ****** */
 const handleGoogleLogin = () => {
@@ -123,6 +119,7 @@ const handleGoogleLogin = () => {
                 className="input"
                 name="photoURL"
                 placeholder="Photo URL"
+                required
               />
               {/* email */}
               <label className="label">Email</label>

@@ -5,9 +5,12 @@ import { AuthContext } from "../provider/AuthContext";
 import defaultProPic from "../assets/userphoto.png";
 import Swal from "sweetalert2";
 import { Tooltip } from 'react-tooltip'
+import Loading from "./Loading";
 
 const Navbar = () => {
-  const { user, logOut } = use(AuthContext);
+  const { user, logOut, loading } = use(AuthContext);
+console.log("Current user:", user);
+
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -42,6 +45,10 @@ const Navbar = () => {
         });
       });
   };
+
+  if(loading){
+    return null
+  }
 
   return (
     <div data-theme="abyss">
@@ -118,15 +125,15 @@ const Navbar = () => {
         <div className="navbar-end flex gap-2">
           {user ? (
             <>
-              <div
-                className="tooltip tooltip-bottom flex items-center"
-                data-tip={user.displayName || "no name"}>
+            <Tooltip anchorSelect=".user-avatar" content={user.displayName || "No name"} />
+              <div className="flex items-center">
                 <img
-                  className="w-6 md:w-8 rounded-full border"
+                  className="w-6 user-avatar md:w-8 rounded-full border"
                   src={user.photoURL || defaultProPic}
                   alt=""
+                  title={user.displayName || "no name"}
+                  style={{ cursor: "pointer" }}
                 />
-
                 <button
                   onClick={handleLogout}
                   className="btn btn-sm btn-outline hover:bg-accent ml-2">
@@ -138,13 +145,13 @@ const Navbar = () => {
             <>
               <NavLink
                 to="/login"
-                className="btn btn-sm hover:bg-accent text-sm btn-outline md:text-lg md:w-16 w-14  ">
+                className="btn btn-sm hover:bg-accent text-sm btn-outline md:text-md md:w-16 w-14  ">
                 {" "}
                 Login
               </NavLink>
               <NavLink
                 to="/signup"
-                className="btn btn-sm hover:bg-accent btn-outline text-sm w-15 md:text-lg md:w-19">
+                className="btn btn-sm hover:bg-accent btn-outline text-sm w-15 md:text-md md:w-19">
                 Signup
               </NavLink>
               
