@@ -2,10 +2,60 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../provider/AuthContext';
 import { FaRegEdit } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
+import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const MyListing = () => {
       const { user, loading } = use(AuthContext);
       console.log("Current user email:", user?.email);
+
+
+      /***for delete button */
+    //   const listings = useLoaderData();
+    //   const {_id} = listings
+      
+
+
+      const handleDelete = (_id)=>{
+        console.log(_id)
+        
+        Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+fetch(`http://localhost:3000/listings/${_id}`,{
+
+    method: 'DELETE'
+}
+)
+.then(res=>res.json())
+.then(data => {
+    if(data.deletedCount){
+  Swal.fire({
+      title: "Deleted!",
+      text: "Your listing has been deleted.",
+      icon: "success"
+    });
+    }
+})
+
+
+
+
+    
+  
+  }
+});
+      }
+
+    /**for myListings table */
   const [myListings, setMyListings] = useState([]);
 
   useEffect(() => {
@@ -22,10 +72,11 @@ const MyListing = () => {
 
 
 
+
     return (
        <div className='w-11/12 mx-auto my-4'>
       <h2 className="text-2xl font-bold mb-4 text-center">My Listings</h2>
-      <table className="table w-11/12">
+      <table className="table w-11/12 shadow-md">
         <thead>
           <tr>
             <th>No.</th>
@@ -47,7 +98,7 @@ const MyListing = () => {
                 <button className="btn btn-xs md:btn-sm  btn-error ml-2">Delete</button> */}
                 <div className="md:flex lg:flex gap-4">
   <button className="btn hover:bg-accent btn-xs join-item"><FaRegEdit size={20} /></button>
-  <button className="btn hover:bg-accent btn-xs join-item"><MdDeleteOutline size={20} /></button>
+  <button onClick={()=>handleDelete(listing._id)} className="btn hover:bg-accent btn-xs join-item"><MdDeleteOutline size={20} /></button>
   
 </div>
               </td>
