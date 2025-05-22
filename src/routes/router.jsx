@@ -41,6 +41,7 @@ const router = createBrowserRouter([
       },
        {
         path: '/browseListing',
+        loader: ()=>fetch("http://localhost:3000/listings"),
         Component: BrowseListing,
       },
        {

@@ -41,7 +41,7 @@ console.log(email, password, name, photoURL)
 /**Calling createUser function */
 createUser(email, password)
   .then((result) => {
-    // Use the currently signed-in user for updateProfile
+    // Use the currently signed-in user for updateProfile in FIREBASE
     return updateProfile(result.user, {
       displayName: name,
       photoURL: photoURL,
