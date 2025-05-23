@@ -4,6 +4,7 @@ import { FaRegEdit } from 'react-icons/fa';
 import { MdDeleteOutline } from 'react-icons/md';
 import { Link, useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
+import Loading from '../components/Loading';
 
 const MyListing = () => {
       const { user, loading } = use(AuthContext);
@@ -45,6 +46,10 @@ fetch(`http://localhost:3000/listings/${_id}`,{
     });
     }
 })
+//remove listing from the state immediately
+const updatedListings = myListings.filter(listing => listing._id !== _id);
+setMyListings(updatedListings);
+
 
   }
 });
@@ -62,7 +67,7 @@ fetch(`http://localhost:3000/listings/${_id}`,{
   }, [user, loading]);
 
   if (loading) {
-    return <p>Loading...</p>; // or a spinner
+    return <p><Loading></Loading></p>; // or a spinner
   }
 
 
@@ -107,7 +112,3 @@ fetch(`http://localhost:3000/listings/${_id}`,{
 
 export default MyListing;
 
-// <td>
-//                 <button className="btn btn-sm btn-warning">Update</button>
-//                 <button className="btn btn-sm btn-error ml-2">Delete</button>
-//               </td>
