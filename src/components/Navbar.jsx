@@ -6,6 +6,7 @@ import defaultProPic from "../assets/userphoto.png";
 import Swal from "sweetalert2";
 import { Tooltip } from 'react-tooltip'
 import Loading from "./Loading";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, logOut, loading } = use(AuthContext);
@@ -81,28 +82,30 @@ console.log("Current user:", user);
                 <NavLink to="./">Home</NavLink>
               </li>
 
+              
+            <li>
+              <NavLink to='/addToFind'>Add to Find Roommate</NavLink>
+            </li>
+             <li>
+              <NavLink to='/browseListing'>Browse Listing</NavLink>
+            </li>
               <li>
-                <a>Add to Find Roommate</a>
-              </li>
-              <li>
-                <a>Browse Listing</a>
-              </li>
-              <li>
-                <a>My Listings</a>
+               <NavLink to='/myListing'>My Listings</NavLink>
               </li>
             </ul>
           </div>
-          <div className="flex justify-center items-center">
-            <span>
+          <div className="flex items-center">
+            <NavLink to='/'>
               {" "}
               <img src={logo} className="w-10 rounded-xl" alt="" />
-            </span>
-            <a className="md:btn btn-ghost btn text-sm md:text-xl hover:bg-accent hidden md:block items-center">
+            </NavLink>
+            <NavLink to='/' className="md:btn btn-ghost btn pt-1 text-sm md:text-xl hover:bg-accent hidden md:block ">
               Roommate
-            </a>
+            </NavLink>
+            <ThemeToggle />
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex items-center">
           <ul className="menu menu-horizontal px-1">
             <li>
               <NavLink to="./">Home</NavLink>
@@ -117,7 +120,11 @@ console.log("Current user:", user);
             <li>
               <NavLink to='/myListing'>My Listings</NavLink>
             </li>
+          
+            
           </ul>
+            
+            
         </div>
 
         {/*  user is logged in =  (1) show the user photoURL, (2)hover over the image it will show the displayName, (3) And it will show the “Log out” button*/}

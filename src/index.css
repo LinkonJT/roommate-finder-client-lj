@@ -4,7 +4,7 @@
 
 @import "tailwindcss";
 @plugin "daisyui" {
-    themes: lemonade --default, abyss }
+    themes: lemonade --default, abyss, dark }
 
 
 

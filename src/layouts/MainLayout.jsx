@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
 import { AuthContext } from '../provider/AuthContext';
-import Loading from 'daisyui/components/loading';
 
 const MainLayout = () => {
 

@@ -32,7 +32,7 @@ const BrowseListing = () => {
                 <td>${listing.rent}</td>
                 <td className="hidden md:block">{listing.location}</td>
                 <td>
-                  <NavLink to={`/listing/${listing._id}`}  className="btn btn-sm">See More</NavLink>
+                  <NavLink to={`/listing/${listing._id}`}  className="btn btn-sm hover:bg-accent">See More</NavLink>
                 </td>
               </tr>
             ))}

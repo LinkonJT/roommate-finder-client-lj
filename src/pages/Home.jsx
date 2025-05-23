@@ -9,7 +9,7 @@ const Home = () => {
 
   
     return (
-        <div>
+        <div data-theme='lemonade'>
             <Slider></Slider>
             <FeaturedListing></FeaturedListing>
             <WhyRF></WhyRF>
