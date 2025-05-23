@@ -172,7 +172,7 @@ const handleAddListing = (e)=>{
             <input
               type="email"
               name="email"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full bg-gray-300"
               value={user?.email || ''} // Populate with user's email
               readOnly // 
               // disabled // 
@@ -187,7 +187,7 @@ const handleAddListing = (e)=>{
             <input
               type="text"
               name="name"
-              className="input input-bordered w-full"
+              className="input input-bordered bg-gray-300 w-full"
               value={user?.displayName || ''} // Populate with user's display name
               readOnly
               // disabled 

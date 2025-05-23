@@ -186,7 +186,7 @@ fetch(`https://roommate-finder-server-rust.vercel.app/listings/${_id}`, {
             <input
               type="email"
               name="email"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full  bg-gray-300"
               value={user?.email || ''} // Populate with user's email
               readOnly // 
               // disabled // 
@@ -201,7 +201,7 @@ fetch(`https://roommate-finder-server-rust.vercel.app/listings/${_id}`, {
             <input
               type="text"
               name="name"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full  bg-gray-300"
               value={user?.displayName || ''} // Populate with user's display name
               readOnly
               // disabled 
