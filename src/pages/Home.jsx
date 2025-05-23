@@ -1,6 +1,9 @@
 import React, { use } from 'react';
 import Slider from '../components/Slider';
 import { AuthContext } from '../provider/AuthContext';
+import FeaturedListing from '../components/FeaturedListing';
+import WhyRF from '../components/WhyRF';
+import HowItWorks from '../components/HowItWorks';
 
 const Home = () => {
 
@@ -8,6 +11,9 @@ const Home = () => {
     return (
         <div>
             <Slider></Slider>
+            <FeaturedListing></FeaturedListing>
+            <WhyRF></WhyRF>
+            <HowItWorks></HowItWorks>
         </div>
     );
 };
