@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+import { toast } from 'react-toastify';
+import Loading from './Loading';
 
 const FeaturedListing = () => {
 
   const [featured, setFeatured] = useState([]);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(()=>{
     fetch ('https://roommate-finder-server-eosin.vercel.app/featured')
     .then(res=>res.json())
     .then(data=>{
         setFeatured(data)
+        setLoading(false); 
+    }).catch(error=>{
+      toast.error(error.message)
+      setLoading(false);
     })
   },[])
 
-
+if(loading){
+  return <Loading></Loading>
+}
 
     return (
        <section className="py-10 px-4  w-11/12 mx-auto">

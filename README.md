@@ -1,12 +1,22 @@
-# React + Vite
+# 🏠 Roommate Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site URL:** [https://roommate-finder-website-f7f07.web.app/](https://roommate-finder-website-f7f07.web.app/)
 
-Currently, two official plugins are available:
+Roommate Finder is a modern web application that helps individuals find compatible roommates and available shared accommodations with ease.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🔥 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 **User Authentication:** Secure sign-up, login, and logout functionality using Firebase Authentication.
+- 📄 **Post a Listing:** Registered users can post new roommate find listings including details like rent, room type, preferences, and contact info.
+- 📋 **Browse Listings:** View all roommate listings in a neatly organized table with essential information and quick access to detailed pages.
+- 🧡 **Like System:** Users can like a listing once; the like count updates and toggles when clicked again.
+- 📞 **Contact Reveal on Like:** The contact number is hidden by default and only appears once the user shows interest by liking the post.
+- 🌟 **Featured Listings:** A dynamic section that shows 6 available roommate posts using MongoDB’s limit and filtering.
+- 🌗 **Dark/Light Theme Toggle:** Easily switch between dark and light modes using DaisyUI’s built-in theming support.
+- 📊 **Extra Sections:** Additional meaningful sections on the homepage for enhanced user experience and engagement.
+
+---
+
+Feel free to explore the live site and try posting or browsing listings!
