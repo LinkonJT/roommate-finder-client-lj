@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
        {
         path: '/browseListing',
-        loader: ()=>fetch("http://localhost:3000/listings"),
+        loader: ()=>fetch("https://roommate-finder-server-eosin.vercel.app/listings"),
         Component: BrowseListing,
       },
        {
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
 
       {
         path: '/listing/:id',
-        loader: ({params})=>fetch(`http://localhost:3000/listings/${params.id}`),
+        loader: ({params})=>fetch(`https://roommate-finder-server-eosin.vercel.app/listings/${params.id}`),
         element:
         <PrivateRoute>
           <Details></Details>
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       },
        {
         path: '/updateListing/:id',
-        loader: ({params})=>fetch(`http://localhost:3000/listings/${params.id}`),
+        loader: ({params})=>fetch(`https://roommate-finder-server-eosin.vercel.app/listings/${params.id}`),
         element:
         <PrivateRoute>
           <UpdateListing></UpdateListing>

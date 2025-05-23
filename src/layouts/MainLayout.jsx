@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
 import { AuthContext } from '../provider/AuthContext';
+import ThemeToggle from '../components/ThemeToggle';
 
 const MainLayout = () => {
 
@@ -14,6 +15,7 @@ const MainLayout = () => {
     return (
         <div className='flex flex-col min-h-screen'>
             <Navbar></Navbar>
+          
           <main className='flex-1'>
               <Outlet></Outlet>
           </main>

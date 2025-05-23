@@ -6,7 +6,7 @@ const FeaturedListing = () => {
   const [featured, setFeatured] = useState([]);
 
   useEffect(()=>{
-    fetch ('http://localhost:3000/featured')
+    fetch ('https://roommate-finder-server-eosin.vercel.app/featured')
     .then(res=>res.json())
     .then(data=>{
         setFeatured(data)

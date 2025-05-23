@@ -21,7 +21,7 @@ console.log(updatedListing);
 
 /****send updated listing to Database */
 
-fetch(`http://localhost:3000/listings/${_id}`, {
+fetch(`https://roommate-finder-server-eosin.vercel.app/listings/${_id}`, {
   method: 'PUT',
   headers:{
     'content-type': 'application/json'
