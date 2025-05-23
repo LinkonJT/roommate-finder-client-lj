@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Loading from '../components/Loading';
 import { SlLike } from 'react-icons/sl';
 import { Fade } from "react-awesome-reveal";
+import { AuthContext } from '../provider/AuthContext';
 
 const Details = () => {
 
   const listingDetails = useLoaderData()
   console.log('Fetched listing:', listingDetails);
+
+  const {user} = useContext(AuthContext)
+  const currentUserEmail = user?.email || ""
+   const listingOwnerEmail = listingDetails?.email || "";
+  const isOwnPost = currentUserEmail === listingOwnerEmail;
+
 
 
 /******#######    CHELLENGE part like button ##########****************
@@ -20,18 +27,20 @@ const Details = () => {
 
 
 const [likeCount, setLikeCount ] = useState(0)
-const [liked, setLiked] = useState(false);
+// const [liked, setLiked] = useState(false);
 const [showContact, setShowContact] = useState(false)
 
 const handleLike = ()=>{
-     if (!liked) {
+     if (!isOwnPost) {
       setLikeCount(prev => prev + 1);
       setShowContact(true);
-    } else {
-      setLikeCount(prev => prev - 1);
-      setShowContact(false);
-    }
-    setLiked(!liked);
+    } 
+    
+    // else {
+    //   setLikeCount(prev => prev - 1);
+    //   setShowContact(false);
+    // }
+    // setLiked(!liked);
 }
 
 
@@ -61,7 +70,7 @@ if(!listingDetails){
     </div>
    
     
-    <button onClick={handleLike} className={`btn btn-square btn-ghost ${liked? 'text-red-500': ''}`}>
+    <button onClick={handleLike} className="btn btn-square btn-ghost">
       <SlLike size={20} />
     </button>
   </li>
