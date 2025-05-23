@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../provider/AuthContext';
 import { useLoaderData } from 'react-router';
+import { toast } from "react-toastify";
 
 const UpdateListing = () => {
 
     const {user} = useContext(AuthContext)
 
-const {title, location, roomType, lifestylePreferences, contactInfo, availability,description,rent } = useLoaderData();
+const {_id, title, location, roomType, lifestylePreferences, contactInfo, availability,description,rent } = useLoaderData();
+
+
 const handleUpdateCoffee=(e)=>{
     e.preventDefault()
 const form = e.target;
@@ -16,10 +19,21 @@ console.log(updatedListing);
 
 
 
-/****send updated coffe to Database */
+/****send updated listing to Database */
 
-
-
+fetch(`http://localhost:3000/listings/${_id}`, {
+  method: 'PUT',
+  headers:{
+    'content-type': 'application/json'
+  },
+  body: JSON.stringify(updatedListing )
+})
+.then(res=>res.json())
+.then(data=>{
+ if(data.modifiedCount){
+  toast.success("Data updated Successfully")
+ }
+})
 
 
 }
