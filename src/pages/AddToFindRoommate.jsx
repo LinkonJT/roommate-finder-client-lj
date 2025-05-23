@@ -15,7 +15,7 @@ const handleAddListing = (e)=>{
     console.log(newListing)
 
     /*****send Listing Data to db */
-    fetch('https://roommate-finder-server-eosin.vercel.app/listings', {
+    fetch('https://roommate-finder-server-rust.vercel.app/listings', {
       method: 'POST',
        headers: {
     "content-type": "application/json",

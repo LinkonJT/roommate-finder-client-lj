@@ -3,7 +3,6 @@ import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
 import { AuthContext } from '../provider/AuthContext';
-import ThemeToggle from '../components/ThemeToggle';
 
 const MainLayout = () => {
 

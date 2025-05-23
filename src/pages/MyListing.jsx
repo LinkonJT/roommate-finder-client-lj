@@ -31,7 +31,7 @@ const MyListing = () => {
 }).then((result) => {
   if (result.isConfirmed) {
 
-fetch(`https://roommate-finder-server-eosin.vercel.app/listings/${_id}`,{
+fetch(`https://roommate-finder-server-rust.vercel.app/listings/${_id}`,{
 
     method: 'DELETE'
 }
@@ -60,7 +60,7 @@ setMyListings(updatedListings);
 
   useEffect(() => {
     if (!loading && user?.email) {
-      fetch(`https://roommate-finder-server-eosin.vercel.app/myListings?email=${user.email}`)
+      fetch(`https://roommate-finder-server-rust.vercel.app/myListings?email=${user.email}`)
         .then(res => res.json())
         .then(data => setMyListings(data));
     }

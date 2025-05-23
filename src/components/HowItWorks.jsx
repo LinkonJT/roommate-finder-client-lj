@@ -1,10 +1,11 @@
 import React from 'react';
-
+import { Fade } from "react-awesome-reveal";
 
 const HowItWorks = () => {
     return (
-        <section className="py-10 px-4 bg-base-100 w-11/12 mx-auto">
-    <h2 className="text-2xl font-bold text-center mb-6">How It Works</h2>
+        <section className="py-10 px-4 w-11/12 mx-auto">
+    <Fade>    <h2 className="text-2xl font-bold text-center mb-6">How It Works</h2>
+</Fade>
     <ol className="p-4 bg-base-200 rounded-xl text-lg shadow-xl">
       <li><span className='font-semibold'>Sign Up / Log In:</span> Create your account to get started.</li>
       <li><span className='font-semibold'>Post or Browse Listings:</span> Add your own post or explore roommate listings from others.</li>
