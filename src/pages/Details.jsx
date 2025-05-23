@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Loading from '../components/Loading';
 import { SlLike } from 'react-icons/sl';
+import { Fade } from "react-awesome-reveal";
 
 const Details = () => {
 
@@ -49,7 +50,8 @@ if(!listingDetails){
       </h2>
           <ul className="list bg-base-100 rounded-box shadow-md">
   
-  <li className="p-4 pb-2 text-lg tracking-wide text-center font-bold lg:text-2xl">Listing Details</li>
+  <Fade>  <li className="p-4 pb-2 text-lg tracking-wide text-center font-bold lg:text-2xl">Listing Details</li>
+</Fade>
   
   <li className="list-row">
     <div><img className="size-10 rounded-box" src="https://cdn.pixabay.com/photo/2020/01/03/05/36/house-4737447_1280.png"/></div>

@@ -19,7 +19,7 @@ const BrowseListing = () => {
               <th >No.</th>
               <th>Title</th>
               <th>Rent</th>
-              <th className="hidden md:block lg;block">Location</th>
+              <th className="hidden md:block lg:block">Location</th>
               <th>Details</th>
             </tr>
           </thead>

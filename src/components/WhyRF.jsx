@@ -1,9 +1,12 @@
 import React from 'react';
+import { Fade } from "react-awesome-reveal";
 
 const WhyRF = () => {
     return (
         <section className="py-10 px-4  w-11/12 mx-auto">
-    <h2 className="text-2xl font-bold text-center mb-6">Why Choose Our Platform?</h2>
+ 
+    <Fade>    <p className="text-2xl font-bold text-center mb-6">Why Choose Our Platform?</p>
+</Fade>
     <div className="grid md:grid-cols-3 gap-6" >
       <div className="p-4 bg-base-200 rounded-xl shadow-xl">
         <h3 className="font-bold text-lg mb-2">Verified Listings</h3>

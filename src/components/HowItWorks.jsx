@@ -1,5 +1,5 @@
 import React from 'react';
-import { SlLike } from 'react-icons/sl';
+
 
 const HowItWorks = () => {
     return (

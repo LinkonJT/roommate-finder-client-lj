@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import Loading from './Loading';
+import { Fade } from "react-awesome-reveal";
 
 const FeaturedListing = () => {
 
@@ -26,7 +27,10 @@ if(loading){
 
     return (
        <section className="py-10 px-4  w-11/12 mx-auto">
-      <h2 className="text-2xl md:text-sky-300xl font-bold text-center mb-6">Featured Roommates</h2>
+        <Fade><h2 className="text-2xl md:text-sky-300xl font-bold text-center mb-6">Featured Roommates</h2></Fade>
+
+        
+      
       <div className="grid md:grid-cols-3 gap-6">
         {
         featured.map((item) => (
